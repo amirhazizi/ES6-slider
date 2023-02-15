@@ -35,9 +35,18 @@ const startSlider = (type) => {
   active.classList.remove("active")
   last.classList.remove("last")
   next.classList.remove("next")
+  if (type === "prev") {
+    active.classList.add("next")
+    last.classList.add("active")
+    next = last.previousElementSibling || container.lastElementChild
+    next.classList.add("last")
+    return
+  }
   active.classList.add("last")
   last.classList.add("next")
   next.classList.add("active")
 }
 nextBtn.addEventListener("click", startSlider)
-prevBtn.addEventListener("click", startSlider)
+prevBtn.addEventListener("click", () => {
+  startSlider("prev")
+})
