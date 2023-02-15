@@ -28,3 +28,16 @@ container.innerHTML = people
           </article>`
   })
   .join("")
+const startSlider = (type) => {
+  const active = document.querySelector(".active")
+  const last = document.querySelector(".last")
+  let next = active.nextElementSibling || container.firstElementChild
+  active.classList.remove("active")
+  last.classList.remove("last")
+  next.classList.remove("next")
+  active.classList.add("last")
+  last.classList.add("next")
+  next.classList.add("active")
+}
+nextBtn.addEventListener("click", startSlider)
+prevBtn.addEventListener("click", startSlider)
